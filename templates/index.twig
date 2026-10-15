@@ -1,0 +1,14 @@
+{% extends 'layout/base.twig' %}
+
+{% block title %}{{ trans('newsletter.title') }} – {{ site_name }}{% endblock %}
+
+{% block content %}
+<h1>{{ trans('newsletter.title') }}</h1>
+<p>{{ trans('newsletter.intro') }}</p>
+<form method="post" action="{{ url('/newsletter') }}" class="stack-form">
+    {{ csrf_field() }}
+    <label for="email">{{ trans('newsletter.email') }}</label>
+    <input id="email" name="email" type="email" autocomplete="email" required>
+    <button type="submit">{{ trans('newsletter.subscribe') }}</button>
+</form>
+{% endblock %}

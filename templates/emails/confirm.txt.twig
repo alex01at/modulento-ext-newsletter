@@ -1,0 +1,7 @@
+{# Plain text: nothing here is HTML-escaped. Blocks: subject, body. #}
+{% block subject %}{{ trans('newsletter.mail.confirm.subject') }}{% endblock %}
+{% block body %}
+{{ trans('newsletter.mail.confirm.body', {link: link}) }}
+
+{{ trans('core.mail.signature') }}
+{% endblock %}

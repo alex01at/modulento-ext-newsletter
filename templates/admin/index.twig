@@ -1,0 +1,47 @@
+{% extends '@admin/layout.twig' %}
+
+{% block title %}{{ trans('newsletter.admin.title') }} – {{ site_name }}{% endblock %}
+
+{% block admin %}
+{% include '@admin/_page_header.twig' with {heading: trans('newsletter.admin.title')} only %}
+
+<section class="card-box">
+    <p>{{ trans('newsletter.admin.count', {count: confirmed_count}) }}</p>
+    <form method="post" action="{{ url('/admin/newsletter/send') }}" class="stack-form">
+        {{ csrf_field() }}
+        <label for="subject">{{ trans('newsletter.admin.subject') }}</label>
+        <input id="subject" name="subject" type="text" maxlength="150" required>
+        <label for="body">{{ trans('newsletter.admin.body') }}</label>
+        <textarea id="body" name="body" rows="10" required></textarea>
+        <button type="submit">{{ trans('newsletter.admin.send') }}</button>
+    </form>
+</section>
+
+<section class="card-box">
+    <h2>{{ trans('newsletter.admin.history') }}</h2>
+    {% if sends is empty %}
+        <p class="empty">{{ trans('newsletter.admin.history_none') }}</p>
+    {% else %}
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr>
+                    <th scope="col">{{ trans('newsletter.admin.sent_at') }}</th>
+                    <th scope="col">{{ trans('newsletter.admin.subject') }}</th>
+                    <th scope="col">{{ trans('newsletter.admin.recipients') }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for send in sends %}
+                    <tr>
+                        <th scope="row">{{ send.sent_at }}</th>
+                        <td>{{ send.subject }}</td>
+                        <td>{{ send.recipient_count }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+</section>
+{% endblock %}

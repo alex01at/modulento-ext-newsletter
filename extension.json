@@ -1,0 +1,8 @@
+{
+    "id": "newsletter",
+    "name": "Newsletter",
+    "version": "0.1.0",
+    "api": 1,
+    "type": "addon",
+    "namespace": "Modulento\\Newsletter"
+}

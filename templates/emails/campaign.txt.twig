@@ -1,0 +1,7 @@
+{# Plain text: nothing here is HTML-escaped. subject/body are the administrator's own text, sent as typed. #}
+{% block subject %}{{ subject }}{% endblock %}
+{% block body %}
+{{ body }}
+
+{{ trans('newsletter.mail.campaign.unsubscribe', {link: unsubscribe_link}) }}
+{% endblock %}
