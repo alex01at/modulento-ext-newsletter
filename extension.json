@@ -1,8 +1,9 @@
 {
     "id": "newsletter",
     "name": "Newsletter",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "api": 1,
     "type": "addon",
+    "description": "Adds a double opt-in mailing list and lets an administrator send a message to everyone on it.",
     "namespace": "Modulento\\Newsletter"
 }
